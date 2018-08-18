@@ -1,5 +1,35 @@
 from model import (Leaf, DecisionNode, Question, class_counts)
 
+###########################
+#### Utility Functions ####
+###########################
+def print_tree(node, spacing=""):
+    if isinstance(node, Leaf):
+        print(spacing + "Predict", node.predictions)
+
+    # Base case: we've reached a leaf
+    if isinstance(node, Leaf):
+        print (spacing + "Predict", node.predictions)
+        return
+
+    # Print the question at this node
+    print (spacing + str(node.question))
+
+    # Call this function recursively on the true branch
+    print (spacing + '--> True:')
+    print_tree(node.true_branch, spacing + "  ")
+
+    # Call this function recursively on the false branch
+    print (spacing + '--> False:')
+    print_tree(node.false_branch, spacing + "  ")
+
+def print_leaf(counts):
+    total = sum(counts.values()) * 1.0
+    probs = {}
+    for lbl in counts.keys():
+        probs[lbl] = str(int(counts[lbl] / total * 100)) + "%"
+    return probs
+
 def build_tree(rows):
     """
         Builds tree from given rows
