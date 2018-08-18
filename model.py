@@ -22,14 +22,32 @@ class DecisionNode:
         self.true_branch = true_branch
         self.false_branch = false_branch
 
-    def build_tree(rows):
-
-    def print_tree(node, spacing=""):
-
-    def classify(row, node):
-
-    def print_leaf(counts):
-
-def Leaf:
+class Leaf:
     def __init__(self, rows):
+        self.predictions = class_counts(rows)
+    def classify(self, row):
+        return self.predictions
+
+class Question:
+    def __init__(self, column, value):
+        self.column = column
+        self.value = value
+    def partition(self, rows):
+        true_rows, false_rows = [], []
+        for row in rows:
+            if self.match(row):
+                true_rows.append(row)
+            else:
+                false_rows.append(row)
+        return true_rows, false_rows
+
+    def match(self, example):
+        return example[self.column] >= self.value
+
+    def __repr__(self):
+        return "{0} value >= {1}".format(self.column, self.value)
+
+
+
+
 
