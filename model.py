@@ -21,6 +21,12 @@ class DecisionNode:
         self.question = question
         self.true_branch = true_branch
         self.false_branch = false_branch
+    def classify(self, row):
+        if self.question.match(row):
+            return self.true_branch.classify(row)
+        else:
+            return self.false_branch.classify(row)
+
 
 class Leaf:
     def __init__(self, rows):
