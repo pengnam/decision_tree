@@ -23,8 +23,8 @@ def print_tree(node, spacing=""):
     print (spacing + '--> False:')
     print_tree(node.false_branch, spacing + "  ")
 
-def print_leaf(counts):
-    total = sum(counts.values()) * 1.0
+def print_results(counts):
+    total = float(sum(counts.values()))
     probs = {}
     for lbl in counts.keys():
         probs[lbl] = str(int(counts[lbl] / total * 100)) + "%"

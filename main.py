@@ -1,4 +1,4 @@
-from utils import (print_tree, print_leaf, build_tree)
+from utils import (print_tree, print_results, build_tree)
 # Adapted from https://github.com/random-forests/tutorials/blob/master/decision_tree.py
 training_data = [
     ['Green', 3, 'Apple'],
@@ -28,5 +28,5 @@ testing_data = [
 
 for row in testing_data:
     print ("Actual: %s. Predicted: %s" %
-           (row[-1], print_leaf(my_tree.classify(row))))
+           (row[-1], print_results(my_tree.classify(row))))
 
